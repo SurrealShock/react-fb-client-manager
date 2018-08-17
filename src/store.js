@@ -16,8 +16,7 @@ const firebaseConfig = {
 
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true,
-  notify: notifyReducer
+  useFirestoreForProfile: true
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -32,7 +31,8 @@ const createStoreWithFirebase = compose(
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  notify: notifyReducer
 });
 
 const initialState = {};

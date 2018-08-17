@@ -14,8 +14,6 @@ export default function(state = initialState, action) {
         messageType: action.messageType
       };
     default:
-      return {
-        state
-      };
+      return state;
   }
 }

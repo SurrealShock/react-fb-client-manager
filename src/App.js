@@ -8,11 +8,8 @@ import store from './store';
 import AddClient from './components/clients/AddClient';
 import ClientDetails from './components/clients/ClientDetails';
 import EditClient from './components/clients/EditClient';
-import Login from './components/auth/Login';
-import {
-  UserIsAuthenticated,
-  UserIsNotAuthenticated
-} from './components/helpers/Auth';
+import Login from './auth/Login';
+import { UserIsAuthenticated, UserIsNotAuthenticated } from './helpers/Auth';
 
 class App extends Component {
   render() {

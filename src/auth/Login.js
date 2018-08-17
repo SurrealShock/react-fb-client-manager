@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
-import Spinner from '../layout/spinner';
-import classnames from 'classnames';
+import Alert from './../components/layout/Alert';
+import { notifyUser } from './../actions/NotifyActions';
 
 class Login extends Component {
   state = {
@@ -16,7 +15,7 @@ class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { firebase } = this.props;
+    const { firebase, notifyUser } = this.props;
 
     const { email, password } = this.state;
 
@@ -25,15 +24,20 @@ class Login extends Component {
         email,
         password
       })
-      .catch(err => alert(err));
+      .catch(err => notifyUser('Invalid login', 'error'));
   };
 
   render() {
+    console.log(this.props);
+    const { message, messageType } = this.props.notify;
     return (
       <div className="row">
         <div className="col-md-6 mx-auto">
           <div className="card">
             <div className="card-body">
+              {message ? (
+                <Alert message={message} messageType={messageType} />
+              ) : null}
               <h1 className="text-center pb-4 pt-3">
                 <span className="text-primary">
                   <i className="fas fa-lock" /> Login
@@ -76,4 +80,12 @@ class Login extends Component {
   }
 }
 
-export default firebaseConnect()(Login);
+export default compose(
+  firebaseConnect(),
+  connect(
+    (state, props) => ({
+      notify: state.notify
+    }),
+    { notifyUser }
+  )
+)(Login);

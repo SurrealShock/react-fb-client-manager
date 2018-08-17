@@ -1,6 +1,6 @@
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
-import LoadingScreen from '../layout/spinner'; // change it to your custom component
+import LoadingScreen from '../components/layout/spinner'; // change it to your custom component
 
 const locationHelper = locationHelperBuilder({});
 
