@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
-import Spinner from '../layout/spinner';
-import classnames from 'classnames';
 
 class AppNavBar extends Component {
   state = {
