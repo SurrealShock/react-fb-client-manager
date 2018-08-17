@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import 'firebase/firestore';
 import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
 import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import notifyReducer from './reducers/notifyReducer';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC6537HMpxP2Rv3p4Bb1elo9SPhjBgJxyQ',
@@ -15,7 +16,8 @@ const firebaseConfig = {
 
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true
+  useFirestoreForProfile: true,
+  notify: notifyReducer
 };
 
 firebase.initializeApp(firebaseConfig);
